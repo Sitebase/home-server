@@ -22,7 +22,15 @@ exec { 'apt-get update':
 
 include motd
 
-$devPackages = [ 'git-core', 'curl', 'vim', 'autoconf', 'make', 'htop', 'unzip', 'nodejs', 'npm']
+$devPackages = [ 
+	'git-core', 
+	'curl', 
+	'vim', 
+	'autoconf', 
+	'make', 'htop', 'unzip', 
+	'nodejs', 'npm', 
+	'lm-sensors'				# View sensor temperatures and other values
+]
 package { $devPackages:
 	ensure  => 'installed',
 	require => Exec['apt-get update'],
