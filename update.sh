@@ -3,7 +3,9 @@
 # This script MUST BE run as root
 
 if (whoami != root)
-  then echo "Please run as root"; exit
+  then echo "Please run as root"
+  exit
+fi
 
 # Pull last changes from git
 echo '--> Update repository'
