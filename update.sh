@@ -2,7 +2,7 @@
 # and auto execute this version on the server
 # This script MUST BE run as root
 
-if (whoami != root)
+if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
   exit
 fi
