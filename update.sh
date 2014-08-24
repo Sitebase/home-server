@@ -2,6 +2,9 @@
 # and auto execute this version on the server
 # This script MUST BE run as root
 
+if (whoami != root)
+  then echo "Please run as root"; exit
+
 # Pull last changes from git
 echo '--> Update repository'
 git pull origin master -f
