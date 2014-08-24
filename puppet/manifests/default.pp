@@ -29,7 +29,8 @@ $devPackages = [
 	'autoconf', 
 	'make', 'htop', 'unzip', 
 	'nodejs', 'npm', 
-	'lm-sensors'				# View sensor temperatures and other values
+	'lm-sensors',				# View sensor temperatures and other values
+	'hddtemp'					# View hard disk temperature
 ]
 package { $devPackages:
 	ensure  => 'installed',
