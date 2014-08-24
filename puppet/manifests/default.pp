@@ -22,7 +22,7 @@ exec { 'apt-get update':
 
 include motd
 
-$devPackages = [ 'git-core', 'curl', 'vim', 'autoconf', 'make', 'htop', 'unzip']
+$devPackages = [ 'git-core', 'curl', 'vim', 'autoconf', 'make', 'htop', 'unzip', 'nodejs', 'npm']
 package { $devPackages:
 	ensure  => 'installed',
 	require => Exec['apt-get update'],
