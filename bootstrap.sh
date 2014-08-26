@@ -23,3 +23,15 @@ if [[ -d vcsrepo ]]; then
 else
   git clone https://github.com/puppetlabs/puppetlabs-vcsrepo.git vcsrepo
 fi
+
+if [[ -d couchpotato ]]; then
+  cd couchpotato && git pull && cd ..
+else
+  git clone https://github.com/morphizer/puppet-couchpotato.git couchpotato
+fi
+
+if [[ -d transmission_daemon ]]; then
+  cd transmission_daemon && git pull && cd ..
+else
+  git clone https://github.com/olbat/puppet-transmission_daemon.git transmission_daemon
+fi

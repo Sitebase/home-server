@@ -40,3 +40,14 @@ package { $devPackages:
 exec { 'apt-get update2':
 	command => 'apt-get update',
 }
+
+include couchpotato 
+
+class {'transmission_daemon':
+  download_dir => "/home/wim/Videos",
+  incomplete_dir => "/tmp/downloads",
+  rpc_url => "/transmission/",
+  rpc_port => 9091,
+  rpc_whitelist => ['*.*.*.*'],
+  blocklist_url => 'http://list.iblocklist.com/?list=bt_level1',
+}
