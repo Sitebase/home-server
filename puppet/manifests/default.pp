@@ -42,6 +42,7 @@ exec { 'apt-get update2':
 }
 
 include couchpotato 
+include sickbeard 
 
 class {'transmission_daemon':
   download_dir => "/home/wim/Videos",
