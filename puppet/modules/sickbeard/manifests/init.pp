@@ -17,8 +17,8 @@ class sickbeard {
 
   file { '/opt/sickbeard':
     ensure  => 'directory',
-    owner   => 'sickbeard',
-    group   => 'sickbeard',
+    owner   => 'wim',
+    group   => 'wim',
     mode    => '0700',
     recurse => 'true',
     require => Exec['git_clone_sickbeard'],
