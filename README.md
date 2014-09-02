@@ -17,3 +17,58 @@ Server: HP ProLiant ML350 G5
 
 Install npm forever airsonos
 Install ffmpeg
+
+
+wget -U Mozilla -O output.mp3 "http://translate.google.com/translate_tts?ie=UTF-8&tl=en&q=we+noticed+that+it+is+getting+hot+inside+here"
+wget -U Mozilla -O output.mp3 "http://translate.google.com/translate_tts?ie=UTF-8&tl=nl&q=Er+is+iemand+aan+de+deur"
+wget -U Mozilla -O output.mp3 "http://translate.google.com/translate_tts?ie=UTF-8&tl=nl&q=het+eten+is+gereed"
+
+
+Network speed test apartment
+----------------------------
+All test are done from laptop1 to server.
+
+|     Test    |   Interval   |   Transfer  |   Bandwidth    |
+| ----------- | ------------ | ----------- | -------------- |
+| From wifi   | 0.0-10.5 sec | 19.2 MBytes | 15.4 Mbits/sec |
+| From switch | 0.0-10.0 sec | 1.10 GBytes | 942 Mbits/sec  |
+| From router | 0.0-10.0 sec | 1.10 GBytes | 941 Mbits/sec  |
+
+Groups, users and paths
+-----------------------
+
+|     user     | uid |       group        | gid |                                        description                                         |        home       |
+| ------------ | --- | ------------------ | --- | ------------------------------------------------------------------------------------------ | ----------------- |
+| media        | 996 | media              | 996 | This user folder will contain all media files. So apps will also write to this home folder | /home/media       |
+| couchpatato  | 997 | couchpatato, media | 997 |                                                                                            | /opt/couchpatato  |
+| sickbeard    | 998 | sickbeard, media   | 998 |                                                                                            | /opt/sickbeard    |
+| transmission | 999 | transmission       | 999 | Download torrent files                                                                     | /opt/transmission |
+
+Info
+----
+All users sickbeard, transmission and couchpotato should all be added to the media group.
+I didn't find a good way to do this using inheritance of the puppet modules. So for the moment this needs to be done using commands after you've run the puppet script
+
+sudo usermod -a -G media sickbeard
+sudo usermod -a -G media couchpotato
+sudo usermod -a -G media debian-transmission
+
+Folders created in tranmission module should get 760 rights.
+
+sudo chown media:media /home/media/videos
+sudo chown media:media /home/media/downloads
+sudo chmod 760 /home/media/videos
+sudo chmod 760 /home/media/downloads
+
+### Tranmission config
+In the new ubuntu it's not /etc/init.d anymore but /etc/init/transmission-daemon.conf. Open in vim and change the user and group to "media".
+
+chown media:media /etc/transmission-daemon/settings.json
+chown -R media:media /var/lib/transmission-daemon/downloads/
+chown -R media:media /var/lib/transmission-daemon/info/
+
+I've also replace the transmission conf (/etc/transmission/settings.json) with the one in the root of the repo
+
+### login as user 
+ 
+su sickbeard -
