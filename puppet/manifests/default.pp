@@ -31,7 +31,8 @@ $devPackages = [
 	'nodejs', 'npm', 
 	'lm-sensors',				# View sensor temperatures and other values
 	'hddtemp',					# View hard disk temperature
-	'iperf'						# Do network speed test
+	'iperf',					# Do network speed test
+	'avahi-utils'				# This is needed for plex installation
 ]
 package { $devPackages:
 	ensure  => 'installed',
@@ -83,7 +84,6 @@ file { "/home/media/":
 
 include couchpotato 
 include sickbeard 
-include plex
 
 class {'transmission_daemon':
 	download_dir => "/home/media/videos",

@@ -69,6 +69,10 @@ chown -R media:media /var/lib/transmission-daemon/info/
 
 I've also replace the transmission conf (/etc/transmission/settings.json) with the one in the root of the repo
 
+Install plex
+http://www.thekunit.com/install-plex-server-ubuntu-server/
+
+
 ### login as user 
  
 su sickbeard -
