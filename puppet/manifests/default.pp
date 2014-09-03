@@ -91,7 +91,7 @@ class {'transmission_daemon':
 	rpc_url => "/transmission/",
 	rpc_port => 9091,
 	rpc_whitelist => ['*.*.*.*'],
-	rpc_username => "wim", 
+	rpc_user => "wim", 
     rpc_password => "test", 
 	blocklist_url => 'http://list.iblocklist.com/?list=bt_level1',
 	require => File['/home/media/']
