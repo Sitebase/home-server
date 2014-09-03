@@ -44,3 +44,9 @@ if [ -d sickbeard ]; then
 else
   git clone https://github.com/morphizer/puppet-sickbeard.git sickbeard
 fi
+
+if [ -d plex-server ]; then
+  cd plex-server && git pull && cd ..
+else
+  git clone https://github.com/josephmc5/puppet-plex-server.git plex-server
+fi
