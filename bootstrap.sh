@@ -1,7 +1,7 @@
 cd puppet/modules
 
 # Delete all empty repo folders
-find . -empty -maxdepth 1 -type d -delete
+find . -maxdepth 1 -empty -type d -delete
 
 if [[ -d apt ]]; then
   cd apt && git pull && cd ..
