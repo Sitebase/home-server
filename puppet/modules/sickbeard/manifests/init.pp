@@ -7,9 +7,10 @@ class sickbeard {
   user { 'sickbeard':
     uid => '998',
   }
-  
+
   exec { 'git_clone_sickbeard':
     command => 'git clone --depth 1 git://github.com/midgetspy/Sick-Beard.git sickbeard',
+    creates => '/opt/sickbeard',
     cwd     => '/opt',
     path    => '/usr/bin',
     require => Package['git'],
