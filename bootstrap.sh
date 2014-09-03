@@ -38,3 +38,9 @@ if [ -d transmission_daemon ]; then
 else
   git clone https://github.com/olbat/puppet-transmission_daemon.git transmission_daemon
 fi
+
+if [ -d sickbeard ]; then
+  cd sickbeard && git pull && cd ..
+else
+  git clone https://github.com/morphizer/puppet-sickbeard.git sickbeard
+fi
