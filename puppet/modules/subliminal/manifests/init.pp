@@ -16,13 +16,15 @@ class subliminal {
 		ensure   => present,
 		provider => git,
 		source   => 'git://github.com/Diaoul/subliminal.git',
+		creates  => '/opt/subliminal',
 		owner    => 'media',
 	}
 
 	exec { "install":
-    	command => "git checkout -t origin/0.7.x && pip install guessit==0.7.0 && python setup.py install",
+    	command => "git checkout -t origin/0.7.x && pip install guessit==0.7.0 && python setup.py install && touch INSTALLED",
     	path    => "/usr/local/bin/:/bin/:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin",
     	cwd 	=> "/opt/subliminal",
+    	creates => "/opt/subliminal/INSTALLED",
     	require => Vcsrepo['/opt/subliminal']
 	}
 
