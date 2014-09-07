@@ -4,3 +4,4 @@ puppet/modules/stdlib
 puppet/modules/vcsrepo
 puppet/modules/couchpotato
 puppet/modules/transmission_daemon
+.vagrant/

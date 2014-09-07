@@ -84,7 +84,7 @@ file { "/home/media/":
 
 include couchpotato 
 include sickbeard 
-include plex-server
+include subliminal
 
 class {'transmission_daemon':
 	download_dir => "/home/media/videos",

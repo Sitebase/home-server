@@ -49,16 +49,20 @@ Info
 All users sickbeard, transmission and couchpotato should all be added to the media group.
 I didn't find a good way to do this using inheritance of the puppet modules. So for the moment this needs to be done using commands after you've run the puppet script
 
+sudo usermod -a -G media plex
 sudo usermod -a -G media sickbeard
+sudo usermod -a -G media wim
 sudo usermod -a -G media couchpotato
 sudo usermod -a -G media debian-transmission
 
 Folders created in tranmission module should get 760 rights.
 
 sudo chown media:media /home/media/videos
+sudo chown media:media /home/media/series
 sudo chown media:media /home/media/downloads
-sudo chmod 760 /home/media/videos
-sudo chmod 760 /home/media/downloads
+sudo chmod 770 /home/media/videos
+sudo chmod 770 /home/media/series
+sudo chmod 770 /home/media/downloads
 
 ### Tranmission config
 In the new ubuntu it's not /etc/init.d anymore but /etc/init/transmission-daemon.conf. Open in vim and change the user and group to "media".
@@ -70,8 +74,28 @@ chown -R media:media /var/lib/transmission-daemon/info/
 I've also replace the transmission conf (/etc/transmission/settings.json) with the one in the root of the repo
 
 Install plex
-http://www.thekunit.com/install-plex-server-ubuntu-server/
+* Get last download url for plex from https://plex.tv/downloads
+* wget plexurl.deb
+* sudo dpkg -i plexmediaserver_xxx_amd64.deb
 
+Plex logs = /var/lib/plexmediaserver/Library/Application Support/Plex Media Server/Logs
+
+Install subliminal
+http://www.randomlinuxstuff.tk/2013/02/install-subliminal-command-line.html
+
+Download subtitles for all media files, this can be run in a cron or a hook of the plex update
+subliminal -l nl -- /home/media/
+
+
+http://ubuntuforums.org/showthread.php?t=2210449
+http://blog.specialistdevelopment.com/tutorial/add-new-drive-array-to-linux-hp-server
+
+/etc/fstab
+/dev/cciss/c0d1p1       /media/storage  ext3    defaults        0       0
+
+scanner
+https://help.ubuntu.com/community/ScanningHowTo
+scanimage --format=tiff --resolution 300 > test2.tiff
 
 ### login as user 
  

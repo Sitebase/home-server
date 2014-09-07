@@ -38,15 +38,3 @@ if [ -d transmission_daemon ]; then
 else
   git clone https://github.com/olbat/puppet-transmission_daemon.git transmission_daemon
 fi
-
-if [ -d sickbeard ]; then
-  cd sickbeard && git pull && cd ..
-else
-  git clone https://github.com/morphizer/puppet-sickbeard.git sickbeard
-fi
-
-if [ -d plex-server ]; then
-  cd plex-server && git pull && cd ..
-else
-  git clone https://github.com/josephmc5/puppet-plex-server.git plex-server
-fi
