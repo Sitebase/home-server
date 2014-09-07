@@ -23,4 +23,8 @@ class plex {
 		require		=> Exec['download']  
 	}
 
+	service { 'plexmediaserver':
+		ensure => running,
+	}
+
 }

@@ -27,5 +27,4 @@ class subliminal {
     	require => Vcsrepo['/opt/subliminal']
 	}
 
-
 }
