@@ -16,7 +16,6 @@ class subliminal {
 		ensure   => present,
 		provider => git,
 		source   => 'git://github.com/Diaoul/subliminal.git',
-		creates  => '/opt/subliminal',
 		owner    => 'media',
 	}
 
