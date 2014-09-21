@@ -20,12 +20,14 @@ exec { 'apt-get update':
 	command => 'apt-get update',
 }
 
-include motd
+#include motd
+include sitebase::motd
 
 $devPackages = [ 
 	'git-core', 
 	'curl', 
 	'vim', 
+	'acl',
 	'autoconf', 
 	'make', 'htop', 'unzip', 
 	'nodejs', 'npm', 
@@ -59,7 +61,7 @@ file { "/home/media/":
 	owner => 'media',
 	group => 'media',
 	recurse => true,
-	mode => 760,
+	mode => 770,
 }
 
 # Dir for the downloaded videos
@@ -87,7 +89,7 @@ include sickbeard
 include subliminal
 include plex
 
-class {'transmission_daemon':
+class {'sitebase::transmission_daemon':
 	download_dir => "/home/media/videos",
 	incomplete_dir => "/home/media/downloads",
 	rpc_url => "/transmission",
