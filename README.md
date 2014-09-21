@@ -91,12 +91,36 @@ http://ubuntuforums.org/showthread.php?t=2210449
 http://blog.specialistdevelopment.com/tutorial/add-new-drive-array-to-linux-hp-server
 
 /etc/fstab
-/dev/cciss/c0d1p1       /media/storage  ext3    defaults        0       0
+/dev/cciss/c0d1p1       /media/storage  ext3    defaults,acl        0       0
 
 scanner
 https://help.ubuntu.com/community/ScanningHowTo
 scanimage --format=tiff --resolution 300 > test2.tiff
 
+Install fancontrol
+http://askubuntu.com/questions/22108/how-to-control-fan-speed
+
+
+Sickbeard custom naming
+Season %0S/%SN - s%0Se%0E
+
+Make all files created on the storage device be owned by the media group, so that plex doesn't have problem opening these files
+
+	chgrp media /media/storage/data            # set directory group to G
+	chmod g+s /media/storage/data          # files created in directory will be in group G
+
 ### login as user 
  
 su sickbeard -
+
+## Debugging
+
+/var/couchpotato/Logs
+/opt/sickbeard/logs
+
+
+
+Reduce noice power usage
+* Install SSD
+* Spin down media drive
+* http://projects.nuschkys.net/2011/11/15/how-to-adjust-the-fan-thresholds-of-a-dell-poweredge/

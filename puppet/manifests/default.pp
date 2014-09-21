@@ -89,7 +89,7 @@ include sickbeard
 include subliminal
 include plex
 
-class {'sitebase::transmission_daemon':
+class {'transmission_daemon':
 	download_dir => "/home/media/videos",
 	incomplete_dir => "/home/media/downloads",
 	rpc_url => "/transmission",
