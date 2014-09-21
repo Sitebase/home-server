@@ -1,3 +1,4 @@
+echo '=> Checkout modules'
 cd puppet/modules
 
 # Delete all empty repo folders
@@ -38,3 +39,16 @@ if [ -d transmission_daemon ]; then
 else
   git clone https://github.com/olbat/puppet-transmission_daemon.git transmission_daemon
 fi
+
+
+# Patch module config files
+echo '=> Patch config files'
+cd ../..
+
+# Patch tranmission
+rm puppet/modules/transmission_daemon/templates/settings.json.erb
+cp patch/transmission.json.erb puppet/modules/transmission_daemon/templates/settings.json.erb
+
+# Patch couchpotato
+rm puppet/modules/couchpotato/templates/settings.conf.erb
+cp patch/couchpotato.conf.erb puppet/modules/couchpotato/templates/settings.conf.erb

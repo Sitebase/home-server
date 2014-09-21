@@ -21,13 +21,12 @@ exec { 'apt-get update':
 }
 
 #include motd
-include sitebase::motd
+include motd
 
 $devPackages = [ 
 	'git-core', 
 	'curl', 
 	'vim', 
-	'acl',
 	'autoconf', 
 	'make', 'htop', 'unzip', 
 	'nodejs', 'npm', 
@@ -99,3 +98,10 @@ class {'transmission_daemon':
 	require => File['/home/media/']
 }
 
+
+#file { '/opt/sickbeard/config.ini':
+#    ensure  => file,
+#    content => template('sickbeard/ubuntu-init-sickbeard.erb'),
+#    mode    => '0755',
+#    require => Class['sickbeard'],
+#}
