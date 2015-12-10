@@ -124,3 +124,9 @@ Reduce noice power usage
 * Install SSD
 * Spin down media drive
 * http://projects.nuschkys.net/2011/11/15/how-to-adjust-the-fan-thresholds-of-a-dell-poweredge/
+
+
+# Docker reimplementation
+This is the complete new implementation of my how server using docker instead of puppet.
+
+
